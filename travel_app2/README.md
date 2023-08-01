@@ -1,16 +1,5 @@
 # travel_app2
 
-A new Flutter project.
+Travel app UI 
 
-## Getting Started
-
-This project is a starting point for a Flutter application.
-
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+![Simulator Screenshot - iphone 13 - 2023-08-02 at 00 25 37_iphone13blue_portrait](https://github.com/aminick21/Flutter_UIs/assets/91913427/9f5ebe37-f53b-4f33-a496-2def8813352a)
