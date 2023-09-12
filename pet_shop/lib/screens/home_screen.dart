@@ -5,6 +5,9 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:pet_shop/color.dart';
 import 'package:pet_shop/model/on_boarding_model.dart';
+import 'package:pet_shop/screens/info_screen.dart';
+
+import '../model/pets_model.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -13,8 +16,7 @@ class HomeScreen extends StatefulWidget {
   State<HomeScreen> createState() => _HomeScreenState();
 }
 
-class _HomeScreenState extends State<HomeScreen> {
-
+class _HomeScreenState extends State<HomeScreen> with SingleTickerProviderStateMixin{
 
 
 
@@ -58,7 +60,7 @@ class _HomeScreenState extends State<HomeScreen> {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Text(
-                          'Hi Taban 🙌',
+                          'Hi Nikhil 🙌',
                           style: GoogleFonts.mulish(
                             color: Color(0xFF324B49),
                             fontSize: 32,
@@ -130,20 +132,27 @@ class _HomeScreenState extends State<HomeScreen> {
                 // list view
                 SizedBox(
                   height: 260,
-                  child: ListView(
-                    scrollDirection: Axis.horizontal,
-                    children: [
-                      Container(
+                  child: ListView.builder(
+                    itemCount: pets.length,
+                    itemBuilder: (context,index){
+                      return Container(
                         width: 200,
                         height: 280,
                         child: Column(
                           children: [
-                            CircleAvatar(
-                              radius: 90,
-                              backgroundColor: blueColor,
-                              child: ClipRRect(
-                                  borderRadius: BorderRadius.circular(90),
-                                  child: Image.asset('assets/dog_home.png',width: double.maxFinite,alignment: Alignment.centerRight,height: 300,)),
+                            InkWell(
+                              onTap: (){
+                                Navigator.push(context, MaterialPageRoute(builder: (context)=>InfoScreen(
+                                  pets[index]
+                                )));
+                              },
+                              child: CircleAvatar(
+                                radius: 90,
+                                backgroundColor: blueColor,
+                                child: ClipRRect(
+                                    borderRadius: BorderRadius.circular(90),
+                                    child: Image.asset(pets[index].image,width: double.maxFinite,alignment: Alignment.centerRight,height: 300,)),
+                              ),
                             ),
                             const SizedBox(height: 10,),
                             Text.rich(
@@ -187,65 +196,13 @@ class _HomeScreenState extends State<HomeScreen> {
                             )
                           ],
                         ),
-                      ),
-                      Container(
-                        width: 200,
-                        height: 280,
-                        child: Column(
-                          children: [
-                            CircleAvatar(
-                              radius: 90,
-                              backgroundColor: blueColor,
-                              child: ClipRRect(
-                                  borderRadius: BorderRadius.circular(90),
-                                  child: Image.asset('assets/cat_home.png',width: double.maxFinite,alignment: Alignment.centerRight,height: 300,)),
-                            ),
-                            const SizedBox(height: 10,),
-                            Text.rich(
-                              TextSpan(
-                                children: [
-                                  TextSpan(
-                                    text: 'Soft Cat ( ',
-                                    style: GoogleFonts.mulish(
-                                      color: Colors.black,
-                                      fontSize: 14,
-                                      fontWeight: FontWeight.w500,
-                                    ),
-                                  ),
-                                  TextSpan(
-                                    text: 'Grey',
-                                    style: GoogleFonts.mulish(
-                                      color: Color(0xFF565352),
-                                      fontSize: 14,
-                                      fontWeight: FontWeight.w500,
-                                    ),
-                                  ),
-                                  TextSpan(
-                                    text: ' Color)',
-                                    style:GoogleFonts.mulish(
-                                      color: Colors.black,
-                                      fontSize: 14,
-                                      fontWeight: FontWeight.w500,
-                                    ),
-                                  ),
-                                ],
-                              ),
-                            ),
-                            const SizedBox(height: 10,),
-                            Text(
-                              '\$140.00',
-                              style: GoogleFonts.mulish(
-                                color: Colors.black,
-                                fontSize: 24,
-                                fontWeight: FontWeight.w800,
-                              ),
-                            )
-                          ],
-                        ),
-                      )
-                    ],
+                      );
+                    },
+                    scrollDirection: Axis.horizontal,
                   ),
                 ),
+
+
 
                 //see more
                 Container(
@@ -277,6 +234,8 @@ class _HomeScreenState extends State<HomeScreen> {
                 ),
                 SizedBox(height: 10,),
 
+
+                //expensive pets
                 Padding(
                   padding: const EdgeInsets.symmetric(vertical: 20),
                   child: Align(
@@ -291,7 +250,6 @@ class _HomeScreenState extends State<HomeScreen> {
                     ),
                   ),
                 ),
-
                 SizedBox(
                   height: 200,
                   child: ListView(

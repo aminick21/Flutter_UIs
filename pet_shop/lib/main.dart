@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:pet_shop/screens/home_screen.dart';
 import 'package:pet_shop/screens/on_boarding.dart';
 
@@ -16,10 +15,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Pet Shop',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-      ),
-      home:HomeScreen(),
+      home:OnBoarding(),
     );
   }
 }
